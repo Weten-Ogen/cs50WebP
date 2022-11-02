@@ -1,11 +1,32 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django import forms
+from django.urls import reverse
 
-tasks = ['learning', 'cooking', 'fishing', 'cooking']
+class NewTaskForm(forms.Form):
+    task = forms.CharField()
+
+
 # Create your views here.
 def index(request):
+    if 'tasks' not in request.session:
+        request.session['tasks'] = []
     return render(request, 'task/index.html',{
-        'tasks': tasks
+        'tasks': request.session['tasks']
     })
 
 def add(request):
-    return render(request, 'task/add.html')
+    if request.method == 'POST':
+        form = NewTaskForm(request.POST)
+        if form.is_valid():
+            task = form.cleaned_data['task']
+            request.session['tasks'] += [task]
+            
+            return HttpResponseRedirect(reverse('task:index'))
+        else:
+            return render(request, 'task/add.html',{
+                'form': form
+            })
+    return render(request, 'task/add.html',{
+        'form': NewTaskForm()
+    })

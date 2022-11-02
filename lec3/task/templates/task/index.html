@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'task/style.css'%}">
 </head>
 <body>
+    <h1>Tasks</h1>
     {% block body%}
         {% for task in tasks %}
             <li>{{ task }}</li>
+        {% empty %}
+            <li>No Task added</li>
         {% endfor %}
         <a href="{% url 'task:add' %}">Add a Task</a>
     {% endblock%}
