@@ -1,0 +1,13 @@
+{% extends  "flights/layout.html" %}
+{% block body %}
+    
+    <h2>Passengers</h2>
+    <ul>
+        {% for passenger in passengers %}
+            <li>{{ passenger }}</li>
+        {% empty %}
+            <li>No passenger</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">Home</a>
+{% endblock %}
