@@ -1,0 +1,11 @@
+{% extends 'flights/layout.html' %}
+
+{% block body %}
+    <ol>
+        {% for passenger in passengers %}
+            <li>{{ passenger }}</li>
+        {% empty %}
+            <li>No Passenger</li>
+        {% endfor%}
+    </ol>
+{% endblock %}

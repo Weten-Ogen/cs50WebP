@@ -5,6 +5,15 @@ from .models import Flight
 
 # Index Page
 def index(request):
-    return render(request,'flights/index.html', {
-        "flights": Flight.objects.all()
+    return render(request,'flights/index.html',{
+        "flights":Flight.objects.all()
+    })
+
+# Passengers assigned to flight
+def flight(request, flight_id):
+    flight = Flight.objects.get(pk=flight_id)
+    return render(request, 'flights/flight.html',{
+        "flights": flight,
+        "passengers": flight.passengers.all()
+
     })

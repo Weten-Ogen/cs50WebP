@@ -1,0 +1,12 @@
+submit = document.getElementById('Button');
+
+document.addEventListener('DOMContentLoaded', function(){
+
+    document.querySelector('form').onsubmit = function()
+    {
+    
+        const name = document.querySelector('#name').value;
+        alert( `hello ${name}`);
+
+    };
+})
