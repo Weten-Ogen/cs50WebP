@@ -1,0 +1,5 @@
+python3 -c "from test import test_square"; test_square(10, 100) 
+python3 -c "from test import test_square"; test_square(5, 25) 
+python3 -c "from test import test_square"; test_square(6, 36) 
+python3 -c "from test import test_square"; test_square(1, 1) 
+python3 -c "from test import test_square"; test_square(2, 4) 
